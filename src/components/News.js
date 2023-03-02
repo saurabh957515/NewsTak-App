@@ -35,7 +35,8 @@ capitalizeFirstLetter = (string)=> {
    
       
       async updateNews() {
-        const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=a0d783cc9ac94784992bc99fd9397ecd&page=1&pageSize=${this.props.pageSize}`;
+        // const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=5a75dc4bed864ea7b6d18fc2344ed875&page=1&pageSize=${this.props.pageSize}`;
+        const url = `https://newsapi.org/v2/everything?q=bitcoin&apiKey=5a75dc4bed864ea7b6d18fc2344ed875&page=1`;
         this.setState({ loading: true });
 
         let data = await fetch(url);
@@ -61,7 +62,8 @@ capitalizeFirstLetter = (string)=> {
     }
     fetchMoreData = async () => {  
       this.setState({page: this.state.page + 1})
-      const url =  `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=a0d783cc9ac94784992bc99fd9397ecd&page=1&pageSize=${this.props.pageSize}`;
+      // const url =  `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=5a75dc4bed864ea7b6d18fc2344ed875&page=1&pageSize=${this.props.pageSize}`;
+      const url =  `https://newsapi.org/v2/everything?q=bitcoin&apiKey=5a75dc4bed864ea7b6d18fc2344ed875&page=1`;
       let data = await fetch(url);
       let parsedData = await data.json()
       this.setState({
