@@ -30,3 +30,20 @@
         }
 
        
+
+           <div className="row">
+                       {this.state.articles.filter((article, index, self) =>
+                         index === self.findIndex((a) => a.url === article.url)
+                     ).map((article) => (
+                       <div className="col-md-4" key={article.url}>
+                             <NewsItem
+                                 title={article.title ? article.title : ""}
+                                 description={article.description ? article.description : ""}
+                                 imageUrl={article.urlToImage}
+                                 newsUrl={article.url}
+                                 author={article.author}
+                                 date={article.publishedAt}
+                                 source={article.source.name}
+                            />
+                        </div>
+                       ))}

@@ -41,7 +41,7 @@ capitalizeFirstLetter = (string)=> {
         this.setState({ loading: true });
         let data = await fetch(url);
         let parsedData = await data.json();
-        console.log(parsedData);
+        // console.log(parsedData);
         this.setState({
           articles: parsedData.articles,
             totalResults: parsedData.totalResults,
@@ -63,9 +63,11 @@ capitalizeFirstLetter = (string)=> {
       setTimeout(() => {
         this.setState({
           articles: this.state.articles.concat(parsedData.articles),
+  
           totalResults: parsedData.totalResults
         });
-      }, 1000);
+      }, 1500);
+      console.log("aricles")
       this.updateNews();
     };
 
@@ -79,15 +81,26 @@ capitalizeFirstLetter = (string)=> {
                     dataLength={this.state.articles.length}
                     next={this.fetchMoreData}
                     hasMore={this.state.articles.length !== this.state.totalResults}
-                    loader={<Spinner/>}
-                > 
+                    loader={<Spinner/>} > 
+
                     <div className="container">
-                    <div className="row">
-                        {this.state.articles.map((element) => {
-                            return <div className="col-md-4" key={element.url}>
-                                <NewsItem title={element.title ? element.title : ""} description={element.description ? element.description : ""} imageUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name} />
-                            </div>
-                        })}
+                  
+           <div className="row">
+                       {this.state.articles.filter((article, index, self) =>
+                         index === self.findIndex((a) => a.url === article.url)
+                     ).map((article) => (
+                       <div className="col-md-4" key={article.url}>
+                             <NewsItem
+                                 title={article.title ? article.title : ""}
+                                 description={article.description ? article.description : ""}
+                                 imageUrl={article.urlToImage}
+                                 newsUrl={article.url}
+                                 author={article.author}
+                                 date={article.publishedAt}
+                                 source={article.source.name}
+                            />
+                        </div>
+                       ))}
                     </div>
                     </div> 
                 </InfiniteScroll>
