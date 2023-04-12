@@ -9,6 +9,7 @@ export class News extends Component {
     country: 'in',
     pageSize: 8, 
     category: 'general',
+    q: "bitcoin",
   }
 
 static propTypes = {
@@ -25,7 +26,8 @@ capitalizeFirstLetter = (string)=> {
         super(props);
         console.log("Hello  I am a constructor")
         this.state={
-            articles :[],
+            articles :[ 
+           ],
             loading: true,
             page: 1,
             totalResults: 0
@@ -35,12 +37,11 @@ capitalizeFirstLetter = (string)=> {
    
       
       async updateNews() {
-        // const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=5a75dc4bed864ea7b6d18fc2344ed875&page=1&pageSize=${this.props.pageSize}`;
-        const url = `https://newsapi.org/v2/everything?q=bitcoin&apiKey=5a75dc4bed864ea7b6d18fc2344ed875&page=1`;
+        const url =`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apikey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
         this.setState({ loading: true });
-
         let data = await fetch(url);
-        let parsedData = await data.json()
+        let parsedData = await data.json();
+        console.log(parsedData);
         this.setState({
           articles: parsedData.articles,
             totalResults: parsedData.totalResults,
@@ -48,37 +49,32 @@ capitalizeFirstLetter = (string)=> {
         })
       }
 
-        async componentDidMount() {
-          this.updateNews();
+         componentDidMount= async()=>{
+        this.updateNews();
       }
+    
   
-      handlePrevClick = async () => {
-          this.setState({ page: this.state.page - 1 });
-          this.updateNews();
-      }
-      handleNextClick = async () => {
-        this.setState({ page: this.state.page + 1 });
-        this.updateNews()
-    }
+    
     fetchMoreData = async () => {  
-      this.setState({page: this.state.page + 1})
-      // const url =  `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=5a75dc4bed864ea7b6d18fc2344ed875&page=1&pageSize=${this.props.pageSize}`;
-      const url =  `https://newsapi.org/v2/everything?q=bitcoin&apiKey=5a75dc4bed864ea7b6d18fc2344ed875&page=1`;
+      this.setState({page:this.state.page + 1})
+     const url =  `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apikey}&page={this.state.page}&pageSize=${this.props.pageSize}`;
       let data = await fetch(url);
       let parsedData = await data.json()
-      this.setState({
+      setTimeout(() => {
+        this.setState({
           articles: this.state.articles.concat(parsedData.articles),
           totalResults: parsedData.totalResults
-      })
+        });
+      }, 1000);
+      this.updateNews();
     };
 
 
   render() {
-
     return (
-      // <div   className='container my-3'>
       <>
-          <h1 className='text-center' style={{margin:'40px 0px',marginTop:'90px'}}>NewsMonkey - Top Headlines</h1>
+          <h1 className='text-center' style={{margin:'40px 0px',marginTop:'90px'}}>NewsMonkey - Top Headlines From {this.props.category}
+      </h1>
         <InfiniteScroll
                     dataLength={this.state.articles.length}
                     next={this.fetchMoreData}
@@ -86,7 +82,6 @@ capitalizeFirstLetter = (string)=> {
                     loader={<Spinner/>}
                 > 
                     <div className="container">
-
                     <div className="row">
                         {this.state.articles.map((element) => {
                             return <div className="col-md-4" key={element.url}>
