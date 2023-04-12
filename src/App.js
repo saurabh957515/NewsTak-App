@@ -10,7 +10,7 @@ import {
 
 import React, { Component } from 'react'
 
- export default class  extends Component {
+ export default class Myclass extends Component {
   pageSize = 15;
   apikey="1c9b12e7598146dbb6362bd4475cd15b"
   render() {
