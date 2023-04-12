@@ -24,7 +24,7 @@ capitalizeFirstLetter = (string)=> {
 
     constructor(props){
         super(props);
-        console.log("Hello  I am a constructor")
+        // console.log("Hello  I am a constructor")
         this.state={
             articles :[ 
            ],
