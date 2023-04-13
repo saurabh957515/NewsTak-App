@@ -26,7 +26,8 @@ import React, { Component } from 'react'
   <Route path="/health" element={<News key="health"  apikey={this.apikey} pageSize={this.pageSize} country="in" category="health" />} />
   <Route path="/science" element={<News key="science"  apikey={this.apikey} pageSize={this.pageSize} country="in" category="science" />} />
   <Route path="/sports" element={<News key="sports"   apikey={this.apikey}pageSize={this.pageSize} country="in" category="sports" />} />
-  <Route path="/bitcoin" element={<News key="bitcoin"  apikey={this.apikey} pageSize={this.pageSize} language='en' category="bitcoin" />} />  apikey={this.apikey}
+  <Route path="/Technology" element={<News key="Technology"  apikey={this.apikey} pageSize={this.pageSize} language='en' category="Technology" />} />  
+  
   <Route path="*" element={<News key="bitcoin"  apikey={this.apikey} pageSize={this.pageSize} country="in" category="general" />} />
 </Routes>
 
