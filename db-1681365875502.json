@@ -1,0 +1,19 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "saurabh"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "hello tehre",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "shivam"
+  }
+}
