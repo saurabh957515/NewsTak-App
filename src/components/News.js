@@ -31,7 +31,7 @@ capitalizeFirstLetter = (string)=> {
           page: 1,
           totalResults: 0
         }
-        document.title = `${this.capitalizeFirstLetter(this.props.category)} - NewsMonkey`;
+        document.title = `${this.capitalizeFirstLetter(this.props.category)} - NewsFeed`;
       }
    
       
@@ -77,7 +77,9 @@ capitalizeFirstLetter = (string)=> {
                     dataLength={this.state.articles.length}
                     next={this.fetchMoreData}
                     hasMore={this.state.articles.length !== this.state.totalResults}
-                    loader={<Spinner/>} > 
+                    loader={<Spinner/>}
+                     > 
+
 
                     <div className="container">
                   
