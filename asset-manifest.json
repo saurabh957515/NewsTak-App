@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/NewsTak-App/static/css/main.abd64e84.css",
-    "main.js": "/NewsTak-App/static/js/main.c3122fa9.js",
+    "main.js": "/NewsTak-App/static/js/main.4c7df495.js",
     "static/js/787.4c026eef.chunk.js": "/NewsTak-App/static/js/787.4c026eef.chunk.js",
     "index.html": "/NewsTak-App/index.html",
     "main.abd64e84.css.map": "/NewsTak-App/static/css/main.abd64e84.css.map",
-    "main.c3122fa9.js.map": "/NewsTak-App/static/js/main.c3122fa9.js.map",
+    "main.4c7df495.js.map": "/NewsTak-App/static/js/main.4c7df495.js.map",
     "787.4c026eef.chunk.js.map": "/NewsTak-App/static/js/787.4c026eef.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.abd64e84.css",
-    "static/js/main.c3122fa9.js"
+    "static/js/main.4c7df495.js"
   ]
 }
