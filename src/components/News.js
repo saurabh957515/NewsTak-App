@@ -8,45 +8,36 @@ const News = (props) => {
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
-
   const [articles, setarticles] = useState([]);
   const [loading, setloading] = useState(true);
-  const [page, setpage] = useState(1);
+  // const [page, setpage] = useState(1);
   const [totalResults, settotalResults] = useState(0);
 
-  document.title = `${capitalizeFirstLetter(props.category)} - NewsFeed`;
 
+  const url = `http://localhost:8000/${props.category}`;
   const updateNews = async () => {
-    // const url =`https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=1c9b12e7598146dbb6362bd4475cd15b&page=${page}&pageSize=${props.pageSize}`;
-
-    const url = `http://localhost:8000/${props.category}`;
-    // console.log(url)
-    setloading(true);
-    // let data = await fetch(url);
-    // console.log(data);
-    // let parsedData = await data.json();
-    // console.log("Running");
-    console.log(parsedData);
-    // console.log("hello");
-    setarticles(parsedData[0].articles);
-    settotalResults(parsedData[0].totalResults);
-    setloading(false);
+  console.log(url);
+  setloading(true);
+  let data = await fetch(url);
+  let parsedData = await data.json();
+  console.log("Running");
+  console.log(parsedData);
+  setarticles(parsedData.articles); // Update articles state with parsedData[0].articles
+  settotalResults(parsedData.totalResults);
+  setloading(false);
+  // console.log(articles);
   };
-  console.log(articles)
-
-  // // console.log("oh my god")
   useEffect(() => {
+    document.title = `${capitalizeFirstLetter(props.category)} - NewsFeed`;
     updateNews()
-  });
+  },[]);
   const fetchMoreData = async () => {
-    // const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=1c9b12e7598146dbb6362bd4475cd15b&page=${page}&pageSize=${props.pageSize}`;
-
-    // const url = `http://localhost:8000/${props.category}`;
     let data = await fetch(url);
     let parsedData = await data.json();
-    setarticles(articles.concat(parsedData[0].articles));
-    settotalResults(parsedData[0].totalResults);
-    setpage(page + 1);
+    setarticles(articles.concat(parsedData.articles));
+    settotalResults(parsedData.totalResults);
+    // setpage(page + 1);
+    // console.log(page)
   };
   return (
     <>
@@ -56,16 +47,16 @@ const News = (props) => {
       >
         NewsMonkey - Top Headlines From {props.category}
       </h1>
-      {/* {loading && <Spinner />} */}
+      {loading && <Spinner />}
       <InfiniteScroll
         dataLength={articles.length}
         next={fetchMoreData}
         hasMore={articles.length !== totalResults}
-        loader={
-          // articles.length !== totalResults?
-          <Spinner />
-          // :null
-        }
+        // loader={
+        //   articles.length !== totalResults?
+        //   <Spinner />
+        //   :null
+        // }
       >
         <div className="container">
           <div className="row">
