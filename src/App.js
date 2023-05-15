@@ -8,27 +8,26 @@ import {
   Route,
 } from "react-router-dom";
 
-import React, { Component } from 'react'
+import React from 'react';
 
- export default class Myclass extends Component {
-  pageSize = 5;
-  apikey="24190186a4ad9852df64967200664340"
-  render() {
+  const Myclass  = (props) => {
+ const pageSize = 5;
+ const apikey="c721980036cc44a9aa8efdaf46c68023"
     return (
       <div>
      <Router>
         <NavBar/>
         <Routes>
-  <Route path="/"  element={<News key="general"  apikey={this.apikey} pageSize={this.pageSize} country="in" category="general" />} />
-  <Route path="/business" element={<News key="business"  apikey={this.apikey} pageSize={this.pageSize} country="in" category="business" />} />
-  <Route path="/entertainment" element={<News key="entertainment"  apikey={this.apikey} pageSize={this.pageSize} country="in" category="entertainment" />} />
-  <Route path="/general" element={<News key="general"  apikey={this.apikey} pageSize={this.pageSize} country="in" category="general" />} />
-  <Route path="/health" element={<News key="health"  apikey={this.apikey} pageSize={this.pageSize} country="in" category="health" />} />
-  <Route path="/science" element={<News key="science"  apikey={this.apikey} pageSize={this.pageSize} country="in" category="science" />} />
-  <Route path="/sports" element={<News key="sports"   apikey={this.apikey}pageSize={this.pageSize} country="in" category="sports" />} />
-  <Route path="/Technology" element={<News key="Technology"  apikey={this.apikey} pageSize={this.pageSize} language='en' category="Technology" />} />  
+  <Route path="/"  element={<News key="general"  apikey={apikey} pageSize={pageSize} country="in" category="General" />} />
+  <Route path="/business" element={<News key="business"  apikey={apikey} pageSize={pageSize} country="in" category="Business" />} />
+  <Route path="/entertainment" element={<News key="entertainment"  apikey={apikey} pageSize={pageSize} country="in" category="Entertainment" />} />
+  <Route path="/general" element={<News key="general"  apikey={apikey} pageSize={pageSize} country="in" category="General" />} />
+  <Route path="/health" element={<News key="health"  apikey={apikey} pageSize={pageSize} country="in" category="Health" />} />
+  <Route path="/science" element={<News key="science"  apikey={apikey} pageSize={pageSize} country="in" category="Science" />} />
+  <Route path="/sports" element={<News key="sports"   apikey={apikey}pageSize={pageSize} country="in" category="Sports" />} />
+  <Route path="/Technology" element={<News key="Technology"  apikey={apikey} pageSize={pageSize} language='en' category="Technology" />} />  
   
-  <Route path="*" element={<News key="bitcoin"  apikey={this.apikey} pageSize={this.pageSize} country="in" category="general" />} />
+  <Route path="*" element={<News key="bitcoin"  apikey={apikey} pageSize={pageSize} country="in" category="General" />} />
 </Routes>
 
 
@@ -36,5 +35,6 @@ import React, { Component } from 'react'
       </div>
     ) 
   } 
-}
+  export default Myclass
+
 

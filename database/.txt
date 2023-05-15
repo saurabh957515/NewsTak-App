@@ -1,0 +1,25 @@
+// {
+//   "entertainment":{
+//     "status": "ok",
+//   "totalResults": 70,
+//   "articles": [{
+//     "source": {
+//       "id": null,
+//       "name": "Hindustan Times"
+//     }]
+//   },
+//   "sports":{ "status": "ok",
+//   "totalResults": 70,
+//   "articles": [{
+//     "source": {
+//       "id": null,
+//       "name": "Hindustan Times"
+//     }]},
+//   "health":{ "status": "ok",
+//   "totalResults": 70,
+//   "articles": [{
+//     "source": {
+//       "id": null,
+//       "name": "Hindustan Times"
+//     }]}
+// }
