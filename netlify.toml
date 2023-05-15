@@ -1,2 +1,4 @@
-[build]
-publish = "build-folder-path"
+[[redirects]]
+fromm = "/*"
+to = "/index.html"
+status = 200
