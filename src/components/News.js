@@ -16,12 +16,12 @@ const News = (props) => {
 
   const url = `http://localhost:8000/${props.category}`;
   const updateNews = async () => {
-  console.log(url);
+  // console.log(url);
   setloading(true);
   let data = await fetch(url);
   let parsedData = await data.json();
-  console.log("Running");
-  console.log(parsedData);
+  // console.log("Running");
+  // console.log(parsedData);
   setarticles(parsedData.articles); // Update articles state with parsedData[0].articles
   settotalResults(parsedData.totalResults);
   setloading(false);
